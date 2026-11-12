@@ -5,7 +5,8 @@ import MemoriesSection from "@/components/MemoriesSection";
 import LoveLetter from "@/components/LoveLetter";
 import LoveQuiz from "@/components/LoveQuiz";
 import ReasonsSection from "@/components/ReasonsSection";
-import FutureCapsule from "@/components/FutureCapsule";
+import CapsuleInvitation from "@/components/CapsuleInvitation";
+import CapsuleGate from "@/components/CapsuleGate";
 
 export default function Home() {
   return (
@@ -71,7 +72,7 @@ export default function Home() {
       <LoveLetter />
       <LoveQuiz />
       <ReasonsSection />
-      <FutureCapsule />
+      <CapsuleInvitation />
     </main>
   );
 }

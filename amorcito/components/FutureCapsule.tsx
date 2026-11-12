@@ -4,7 +4,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 
 const STORAGE_KEY = "our-universe-future-capsule";
-const unlockDate = new Date(2027, 10, 11, 0, 0, 0);
+const unlockDate = new Date(2026, 11, 11, 0, 0, 0);
 
 type CapsuleNotes = {
   her: string;
@@ -27,6 +27,7 @@ export default function FutureCapsule() {
     if (stored) {
       try {
         const notes: CapsuleNotes = JSON.parse(stored);
+
         setHerNote(notes.her || "");
         setHisNote(notes.him || "");
 
@@ -49,6 +50,7 @@ export default function FutureCapsule() {
     if (!herDraft.trim()) return;
 
     const notes = { her: herDraft.trim(), him: "" };
+
     localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
     setHerNote(notes.her);
     setStep(2);
@@ -59,6 +61,7 @@ export default function FutureCapsule() {
     if (!hisDraft.trim()) return;
 
     const notes = { her: herNote, him: hisDraft.trim() };
+
     localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
     setHisNote(notes.him);
     setStep(3);
@@ -76,19 +79,25 @@ export default function FutureCapsule() {
   return (
     <section className="capsule-section" id="capsula">
       <div className="capsule-heading">
-        <span className="section-label">UN MENSAJE PARA EL FUTURO</span>
+        <span className="section-label">
+          UN MENSAJE PARA NUESTRO FUTURO
+        </span>
+
         <div className="capsule-symbol">✧</div>
+
         <h2>Nuestra cápsula del tiempo</h2>
+
         <p>
-          Dos corazones, dos mensajes y un mismo deseo: volver aquí dentro de
-          un año y recordar lo bonito que era comenzar esta historia.
+          Dos corazones, dos mensajes y una promesa:
+          volver aquí dentro de un mes para descubrir
+          lo que hoy queremos decirnos.
         </p>
       </div>
 
       <div className="capsule-date">
         <span>FECHA PARA ABRIR</span>
-        <strong>11 · 11 · 2027</strong>
-        <small>Nuestro segundo aniversario de mes ♡</small>
+        <strong>11 · 12 · 2026</strong>
+        <small>Nuestro segundo mes juntos ♡</small>
       </div>
 
       <div className="capsule-card">
@@ -103,38 +112,55 @@ export default function FutureCapsule() {
 
         {opened ? (
           <>
-            <span className="capsule-status">✦ RECUERDOS DEL PASADO ✦</span>
-            <h3>Un año después...</h3>
+            <span className="capsule-status">
+              ✦ RECUERDOS DE HACE UN MES ✦
+            </span>
+
+            <h3>Un mes después...</h3>
+
             <div className="capsule-letter">
               <span>DE TI, PARA ÉL</span>
               <p>{herNote}</p>
             </div>
+
             <div className="capsule-letter">
               <span>DE ÉL, PARA TI</span>
               <p>{hisNote}</p>
             </div>
+
             <p className="capsule-closing">
-              Qué bonito que, entre tantas posibilidades, sigan eligiéndose. ♡
+              Qué bonito que, entre tantas posibilidades,
+              sigan eligiéndose. ♡
             </p>
           </>
         ) : step === 1 ? (
           <>
-            <span className="capsule-status">PRIMER TURNO · TÚ</span>
-            <h3>Una carta para tu futuro</h3>
+            <span className="capsule-status">
+              PRIMER TURNO · TÚ
+            </span>
+
+            <h3>Una carta para dentro de un mes</h3>
+
             <p>
-              Escribe lo que te gustaría recordar, lo que sientes hoy y lo que
-              sueñas vivir con él. Tu mensaje quedará oculto.
+              Escribe lo que sientes hoy, lo que quieres
+              recordar y lo que sueñas vivir con él.
+              Tu mensaje quedará oculto hasta diciembre.
             </p>
+
             <form className="capsule-form" onSubmit={saveHerNote}>
-              <label htmlFor="her-note">Tu mensaje secreto</label>
+              <label htmlFor="her-note">
+                Tu mensaje secreto
+              </label>
+
               <textarea
                 id="her-note"
                 value={herDraft}
                 onChange={(event) => setHerDraft(event.target.value)}
-                placeholder="Mi amor, si estamos leyendo esto un año después..."
+                placeholder="Mi amor, si estamos leyendo esto un mes después..."
                 required
                 rows={6}
               />
+
               <button type="submit" className="capsule-button">
                 Guardar mi carta ♡
               </button>
@@ -142,14 +168,23 @@ export default function FutureCapsule() {
           </>
         ) : step === 2 ? (
           <>
-            <span className="capsule-status">SEGUNDO TURNO · ÉL</span>
+            <span className="capsule-status">
+              SEGUNDO TURNO · ÉL
+            </span>
+
             <h3>Ahora es su turno</h3>
+
             <p>
-              Pásale el dispositivo para que escriba su propio mensaje. Tu
-              carta ya está guardada y no se mostrará.
+              Pásale el dispositivo para que escriba
+              su propio mensaje. Tu carta ya está guardada
+              y no se mostrará.
             </p>
+
             <form className="capsule-form" onSubmit={saveHisNote}>
-              <label htmlFor="his-note">Su mensaje secreto</label>
+              <label htmlFor="his-note">
+                Su mensaje secreto
+              </label>
+
               <textarea
                 id="his-note"
                 value={hisDraft}
@@ -158,6 +193,7 @@ export default function FutureCapsule() {
                 required
                 rows={6}
               />
+
               <button type="submit" className="capsule-button">
                 Sellar su carta ♡
               </button>
@@ -165,11 +201,17 @@ export default function FutureCapsule() {
           </>
         ) : unlocked ? (
           <>
-            <span className="capsule-status">✦ HA LLEGADO EL DÍA ✦</span>
+            <span className="capsule-status">
+              ✦ HA LLEGADO EL DÍA ✦
+            </span>
+
             <h3>Sus palabras los esperan</h3>
+
             <p>
-              Ha pasado un mes. ¿Listos para descubrir lo que se escribieron?
+              Ha pasado un mes. ¿Listos para descubrir
+              lo que se escribieron?
             </p>
+
             <button
               type="button"
               className="capsule-button"
@@ -180,20 +222,28 @@ export default function FutureCapsule() {
           </>
         ) : (
           <>
-            <span className="capsule-status">✦ CÁPSULA SELLADA ✦</span>
+            <span className="capsule-status">
+              ✦ CÁPSULA SELLADA ✦
+            </span>
+
             <h3>Sus palabras están a salvo</h3>
+
             <p>
-              Los dos mensajes están guardados. Ahora toca vivir muchas
-              historias más antes de volver a leerlos.
+              Los dos mensajes están guardados.
+              Ahora toca seguir creando recuerdos
+              antes de volver a leerlos.
             </p>
-            <div className="capsule-seal">SELLADO CON AMOR ♡</div>
+
+            <div className="capsule-seal">
+              SELLADO CON AMOR ♡
+            </div>
           </>
         )}
       </div>
 
       <p className="capsule-footer">
-        “Ojalá que cuando volvamos a leer esto, tengamos mil historias nuevas
-        que contar”.
+        “Ojalá que cuando volvamos a leer esto,
+        tengamos muchas historias nuevas que contar”.
       </p>
     </section>
   );

@@ -379,8 +379,50 @@ async function togglePlay() {
       </div>
 
       <p className="music-footer">
-        Cada canción guarda un pedacito de lo que siento por ti ♡
+                Cada canción guarda un pedacito de lo que siento por ti ♡
       </p>
+
+<div className="shared-playlist">
+  <div className="shared-playlist-note">
+    <span className="shared-playlist-label">
+      ✧ UNA INVITACIÓN ESPECIAL ✧
+    </span>
+
+    <h3>¿Creamos nuestra banda sonora?</h3>
+
+    <p>
+      Estas no son las únicas canciones que me recuerdan
+      a ti, a tu preciosa sonrisa y a lo bonito que es
+      tenerte en mi vida.
+    </p>
+
+    <p>
+      Quiero que sigamos construyendo esto juntos,
+      agregando canciones que nos recuerden momentos,
+      ocurrencias y todo lo que todavía nos falta vivir.
+    </p>
+
+    <p className="shared-playlist-final">
+      Una playlist que nunca esté terminada,
+      porque nuestra historia tampoco lo está. ♡
+    </p>
+
+    <a
+      href="https://open.spotify.com/playlist/3nb2Ej3lfaABICOQekcbOP?si=0cBo1DJsTvWhlHKtfLGkPg&utm_source=copy-link&pt=23fc7d03ad1538e3baae7fd7ed426557&pi=UEGgJ5giTTCcb"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="shared-playlist-button"
+    >
+      <span className="spotify-symbol">♫</span>
+      <span>Construyamos nuestra playlist</span>
+      <span className="playlist-arrow">↗</span>
+    </a>
+
+    <span className="shared-playlist-footer">
+      TÚ + YO + MUCHAS CANCIONES POR DESCUBRIR ♡
+    </span>
+  </div>
+</div>
     </section>
   );
 }
